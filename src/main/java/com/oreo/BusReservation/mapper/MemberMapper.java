@@ -9,6 +9,6 @@ public interface MemberMapper {
     public List<Member> allMembers();
     public Member selectedMember(int id);
     public void insertMember(Member member);
-    public void updateMember(Member ber);
+    public void updateMember(Member member);
     public void deleteMember(int id);
 }
