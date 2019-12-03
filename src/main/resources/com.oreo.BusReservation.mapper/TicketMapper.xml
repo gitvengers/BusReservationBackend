@@ -10,7 +10,7 @@
         WHERE mamber_id = ${memberId}
     </select>
 
-    <select id="selectedTicket">
+    <select id="selectedTicket" resultType="com.oreo.BusReservation.domain.Ticket">
         SELECT *
         FROM Ticket
         WHERE id = ${id}
