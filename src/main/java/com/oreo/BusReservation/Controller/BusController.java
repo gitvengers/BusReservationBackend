@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Timestamp;
 import java.util.List;
 
+@RestController
 public class BusController {
 
     @Autowired
@@ -25,7 +27,6 @@ public class BusController {
     * 버스 수정 (modifyBusInfo)
      */
 
-    @ResponseBody
     @GetMapping("/bus/detail")
     public String busDetail(@RequestParam("busId") int busId) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -34,7 +35,6 @@ public class BusController {
         return objectMapper.writeValueAsString(bus);
     }
 
-    @ResponseBody
     @GetMapping("/bus/list")
     public String busList(@RequestParam("departure") String departure,
                           @RequestParam("arrival") String arrival,
