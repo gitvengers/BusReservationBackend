@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.oreo.BusReservation.mapper.MemberMapper">
+
     <select id="allBus" resultType="com.oreo.BusReservation.domain.Bus">
         SELECT *
          FROM Bus
@@ -27,7 +28,6 @@
          WHERE departure = #{departure}
          AND arrival = #{arrival}
          AND depart_time >= #{depart_time}
-         AND arrive_time <= #{arrive_time}
     </select>
 
     <insert id="insertBus" parameterType="com.oreo.BusReservation.domain.Bus">

@@ -27,6 +27,11 @@ public class Member implements Serializable {
         this.email = email;
     }
 
+    public Member(String user_id, String user_pwd) {
+        this.user_id = user_id;
+        this.user_pwd = user_pwd;
+    }
+
     public int getId() {
         return id;
     }
