@@ -10,20 +10,20 @@
          WHERE admin_id = #{aid}
     </select>
 
-    <select id="insetMember" parameterType="com.oreo.BusReservation.domain.Administrator">
+    <select id="insertAdmin" parameterType="com.oreo.BusReservation.domain.Administrator">
         INSERT INTO Administrator(admin_id, admin_pw) VALUES (
         #{admin_id},
         #{admin_pw}
         )
     </select>
 
-    <update id="updateMember" parameterType="com.oreo.BusReservation.domain.Administrator">
+    <update id="updateAdmin" parameterType="com.oreo.BusReservation.domain.Administrator">
         UPDATE Administrator SET
             admin_pw = #{admin_pw}
         WHERE admin_id = #{admin_id}
     </update>
 
-    <delete id="deleteMember" parameterType="int">
+    <delete id="deleteAdmin" parameterType="int">
         DELETE FROM Administrator
         WHERE id = #{id}
     </delete>

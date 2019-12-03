@@ -20,12 +20,8 @@ public class TicketDAO {
     public Ticket selectedTicket(int id){
         return ticketMapper.selectedTicket(id);
     }
-    public List<Ticket> selectedTickets(List<Integer> tickets){
-        List<Ticket> sTickets = new ArrayList<>();
-        for(int i=0;i<tickets.size();i++){
-            sTickets.add(ticketMapper.selectedTicket(tickets.get(i)));
-        }
-        return sTickets;
+    public List<Ticket> selectedTickets(String uid){
+        return ticketMapper.selectedTickets(uid);
     }
     public void updateTicket(Ticket ticket){
         ticketMapper.updateTicket(ticket);

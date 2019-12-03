@@ -7,7 +7,7 @@ import java.util.List;
 public interface TicketMapper {
     public void insertTicket(Ticket ticket);
     public Ticket selectedTicket(int id);
-    public List<Ticket> selectedTickets(List<Integer> tickets);
+    public List<Ticket> selectedTickets(String tickets);
     public void updateTicket(Ticket ticket);
     public void deleteTicket(int id);
 }
