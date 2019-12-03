@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oreo.BusReservation.mapper.MemberMapper">
+    <select id="allBus" resultType="com.oreo.BusReservation.domain.Bus">
+        SELECT *
+         FROM Bus
+    </select>
+
+    <select id="selectedBus" resultType="com.oreo.BusReservation.domain.Bus">
+        SELECT *
+         FROM Bus
+         WHERE id = #{id}
+    </select>
+
+    <select id="selectedBusListPlace" resultType="com.oreo.BusReservation.domain.Bus">
+        SELECT *
+         FROM Bus
+         WHERE departure = #{departure} AND arrival = #{arrival}
+    </select>
+
+    <select id="selectedBusListPlaceTime" resultType="com.oreo.BusReservation.domain.Bus">
+        SELECT *
+         FROM Bus
+         WHERE departure = #{departure}
+         AND arrival = #{arrival}
+         AND depart_time >= #{depart_time}
+         AND arrive_time <= #{arrive_time}
+    </select>
+
+    <insert id="insertBus" parameterType="com.oreo.BusReservation.domain.Bus">
+        INSERT INTO Bus(departure, arrival, depart_time, arrive_time, type, company) VALUES (
+        departure = #{departure},
+        arrival = #{arrival},
+        depart_time = #{depart_time},
+        arrive_time = #{arrive_time},
+        type = #{type},
+        company = #{company}
+        )
+    </insert>
+
+    <update id="updateBus" parameterType="com.oreo.BusReservation.domain.Administrator">
+        UPDATE Bus SET
+        departure = #{departure},
+        arrival = #{arrival},
+        depart_time = #{depart_time},
+        arrive_time = #{arrive_time},
+        type = #{type},
+        company = #{company}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteBus" parameterType="com.oreo.BusReservation.domain.Bus">
+        DELETE FROM Bus
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

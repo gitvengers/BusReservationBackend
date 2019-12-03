@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface MemberMapper {
     public List<Member> allMembers();
-    public Member selectMember(String uid);
+    public Member selectedMember(int id);
     public void insertMember(Member member);
-    public void updateMemeber(Member member);
+    public void updateMember(Member member);
     public void deleteMember(int id);
 }
