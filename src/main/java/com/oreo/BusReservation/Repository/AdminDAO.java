@@ -11,8 +11,8 @@ public class AdminDAO {
     @Autowired
     AdminMapper adminMapper;
 
-    public Administrator selectAdmin(String aid){
-        return adminMapper.selectedAdmin(aid);
+    public Administrator selectAdmin(int id){
+        return adminMapper.selectedAdmin(id);
     }
 
     public void insertAdmin(Administrator admin){

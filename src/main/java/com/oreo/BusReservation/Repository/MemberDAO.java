@@ -15,8 +15,8 @@ public class MemberDAO {
     public List<Member> allMembers(){
         return memberMapper.allMembers();
     }
-    public Member selectedMember(String uid){
-        return memberMapper.selectedMember(uid);
+    public Member selectedMember(int id){
+        return memberMapper.selectedMember(id);
     }
     public void insertMember(Member member){
         memberMapper.insertMember(member);

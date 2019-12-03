@@ -7,7 +7,7 @@
     <select id="selectedAdmin" resultType="com.oreo.BusReservation.domain.Administrator">
         SELECT *
          FROM Administrator
-         WHERE admin_id = #{aid}
+         WHERE id = #{id}
     </select>
 
     <select id="insertAdmin" parameterType="com.oreo.BusReservation.domain.Administrator">
