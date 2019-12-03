@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oreo.BusReservation.mapper.AdminMapper">
+    <select id="selectedAdmin" resultType="com.oreo.BusReservation.domain.Administrator">
+        SELECT *
+         FROM Administrator
+         WHERE admin_id = #{aid}
+    </select>
+
+    <select id="insetMember" parameterType="com.oreo.BusReservation.domain.Administrator">
+        INSERT INTO Administrator(admin_id, admin_pw) VALUES (
+        #{admin_id},
+        #{admin_pw}
+        )
+    </select>
+
+    <select id="updateMember" parameterType="com.oreo.BusReservation.domain.Administrator">
+        UPDATE Administrator SET
+            admin_pw = #{admin_pw}
+        WHERE admin_id = #{admin_id}
+    </select>
+
+    <select id="deleteMember" parameterType="int">
+        DELETE FROM Administrator
+        WHERE id = #{id}
+    </select>
+
+</mapper>
