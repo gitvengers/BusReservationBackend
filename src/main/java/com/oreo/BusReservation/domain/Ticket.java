@@ -9,8 +9,7 @@ public class Ticket implements Serializable {
     int member_id;
     int info;
 
-    public Ticket(int id, int bus_id, int member_id, int info) {
-        this.id = id;
+    public Ticket(int bus_id, int member_id, int info) {
         this.bus_id = bus_id;
         this.member_id = member_id;
         this.info = info;
