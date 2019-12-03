@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface MemberMapper {
     public List<Member> allMembers();
-    public Member selectedMember(int id);
+    public Member selectedMember(Member member);
     public void insertMember(Member member);
     public void updateMember(Member member);
     public void deleteMember(int id);

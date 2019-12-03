@@ -12,7 +12,7 @@
     <select id="selectedMembers" resultType="com.oreo.BusReservation.domain.Member">
         SELECT *
         FROM Member
-        WHERE id = #{id}
+        WHERE user_id = #{user_id} AND user_pw = #{user_pw}
     </select>
 
     <insert id="insertMember" parameterType="com.oreo.BusReservation.domain.Member">
