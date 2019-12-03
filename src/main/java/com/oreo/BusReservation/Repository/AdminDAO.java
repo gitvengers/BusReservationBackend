@@ -5,7 +5,7 @@ import com.oreo.BusReservation.mapper.AdminMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-@Repository("AdminDAO")
+@Repository("adminDAO")
 public class AdminDAO {
 
     @Autowired

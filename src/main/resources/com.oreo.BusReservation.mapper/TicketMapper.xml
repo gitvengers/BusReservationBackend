@@ -17,15 +17,15 @@
         )
     </select>
 
-    <update id="updateMember" parameterType="com.oreo.BusReservation.domain.Administrator">
+    <select id="updateMember" parameterType="com.oreo.BusReservation.domain.Administrator">
         UPDATE Administrator SET
             admin_pw = #{admin_pw}
         WHERE admin_id = #{admin_id}
-    </update>
+    </select>
 
-    <delete id="deleteMember" parameterType="int">
+    <select id="deleteMember" parameterType="int">
         DELETE FROM Administrator
         WHERE id = #{id}
-    </delete>
+    </select>
 
 </mapper>
