@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.spring.web.json.Json;
 
 import java.util.List;
 
@@ -19,11 +20,16 @@ public class TicketController {
     TicketDAO ticketDAO;
 
     @GetMapping("ticket/list")
-    public JsonArray getTicketList(@RequestParam("member_id") int memberId) {
+    public String getTicketList(@RequestParam("member_id") int memberId) {
         List<Ticket> tickets = ticketDAO.selectedTickets(memberId);
-
         Gson gson = new Gson();
-        JsonElement element = gson.toJsonTree(tickets, new TypeToken<List<Ticket>>(){}.getType());
-        return element.getAsJsonArray();
+        return gson.toJson(tickets);
+    }
+
+    @GetMapping("ticket/detail")
+    public String getTicketDetail(@RequestParam("id") int id) {
+        Ticket ticket = ticketDAO.selectedTicket(id);
+        Gson gson = new Gson();
+        return gson.toJson(ticket);
     }
 }
