@@ -13,15 +13,15 @@
             resultType="com.oreo.BusReservation.domain.Member">
         SELECT *
           FROM Member
-         WHERE user_id = #{user_id} AND user_pw = #{user_pwd}
+         WHERE user_id = #{user_id} AND user_pw = #{user_pw}
     </select>
 
     <insert id="insertMember" parameterType="com.oreo.BusReservation.domain.Member">
         INSERT
-          INTO Member(user_id,user_pwd,name,email)
+          INTO Member(user_id,user_pw,name,email)
         VALUES (
             #{user_id},
-            #{user_pwd},
+            #{user_pw},
             #{name},
             #{email}
         )
@@ -29,7 +29,7 @@
 
     <update id="updateMember" parameterType="com.oreo.BusReservation.domain.Member">
         UPDATE Member
-           SET user_pwd = #{user_pwd},
+           SET user_pw = #{user_pw},
                email = #{email},
                name = #{name}
          WHERE user_id = #{user_id}
