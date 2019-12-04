@@ -17,7 +17,6 @@ import java.util.List;
 
 @EnableAutoConfiguration
 @RestController
-@Controller
 public class BusController {
 
     @Autowired

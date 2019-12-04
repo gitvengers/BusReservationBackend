@@ -18,7 +18,6 @@ import java.util.List;
 
 @EnableAutoConfiguration
 @RestController
-@Controller
 public class TicketController {
     @Autowired
     TicketDAO ticketDAO;
