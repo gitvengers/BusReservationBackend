@@ -7,24 +7,24 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("memberDAO")
+@Repository
 public class MemberDAO {
     @Autowired
     MemberMapper memberMapper;
 
-    public List<Member> allMembers(){
+    public List<Member> allMembers() {
         return memberMapper.allMembers();
     }
-    public Member selectedMember(Member member){
+    public Member selectedMember(Member member) {
         return memberMapper.selectedMember(member);
     }
-    public void insertMember(Member member){
+    public void insertMember(Member member) {
         memberMapper.insertMember(member);
     }
-    public void updateMember(Member member){
+    public void updateMember(Member member) {
         memberMapper.updateMember(member);
     }
-    public void deleteMember(int id){
+    public void deleteMember(int id) {
         memberMapper.deleteMember(id);
     }
 
