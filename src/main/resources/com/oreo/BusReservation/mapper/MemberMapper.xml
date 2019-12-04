@@ -9,14 +9,17 @@
         FROM Member
     </select>
 
-    <select id="selectedMembers" resultType="com.oreo.BusReservation.domain.Member">
+    <select id="selectedMember" parameterType="com.oreo.BusReservation.domain.Member"
+            resultType="com.oreo.BusReservation.domain.Member">
         SELECT *
-        FROM Member
-        WHERE user_id = #{user_id} AND user_pw = #{user_pw}
+          FROM Member
+         WHERE user_id = #{user_id} AND user_pw = #{user_pwd}
     </select>
 
     <insert id="insertMember" parameterType="com.oreo.BusReservation.domain.Member">
-        INSERT INTO Member(user_id,user_pwd,name,email) VALUES (
+        INSERT
+          INTO Member(user_id,user_pwd,name,email)
+        VALUES (
             #{user_id},
             #{user_pwd},
             #{name},
@@ -25,16 +28,17 @@
     </insert>
 
     <update id="updateMember" parameterType="com.oreo.BusReservation.domain.Member">
-        UPDATE Member SET
-            user_pwd = #{user_pwd},
-            email = #{email},
-            name = #{name}
-        WHERE user_id = #{user_id}
+        UPDATE Member
+           SET user_pwd = #{user_pwd},
+               email = #{email},
+               name = #{name}
+         WHERE user_id = #{user_id}
     </update>
 
     <delete id="deleteMember" parameterType="com.oreo.BusReservation.domain.Member">
-        DELETE FROM Member
-        WHERE id=#{id}
+        DELETE
+          FROM Member
+         WHERE id=#{id}
     </delete>
 
 </mapper>
