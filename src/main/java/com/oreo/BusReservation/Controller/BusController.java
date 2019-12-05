@@ -7,10 +7,7 @@ import com.oreo.BusReservation.domain.Bus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -49,5 +46,26 @@ public class BusController {
         return objectMapper.writeValueAsString(bus);
     }
 
+
+    @PostMapping("/bus/register")
+    public String busRegister(@RequestParam("departure") String departure,
+                              @RequestParam("arrival") String arrival,
+                              @RequestParam("depart_time") Timestamp depart_time,
+                              @RequestParam("arrive_time") Timestamp arrive_time,
+                              @RequestParam("type") String type,
+                              @RequestParam("company") String company) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        Bus bus = new Bus(departure,arrival,depart_time,arrive_time,type,company);
+        boolean isSuccess = false;
+        try{
+            busDAO.insertBus(bus);
+            isSuccess = true;
+        }
+        catch (Exception e){
+            System.out.println("Bus Register Failed");
+        }
+
+        return objectMapper.writeValueAsString(isSuccess);
+    }
 
 }
