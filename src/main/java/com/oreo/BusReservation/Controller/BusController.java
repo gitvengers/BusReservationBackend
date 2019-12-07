@@ -40,8 +40,10 @@ public class BusController {
                           @RequestParam("arrival") String arrival,
                           @RequestParam("date") Timestamp date
                           ) throws JsonProcessingException {
-            ObjectMapper objectMapper = new ObjectMapper();
-        List<Bus> bus = busDAO.selectedBusListPlaceTime(departure,arrival,date);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        Timestamp ts = new Timestamp(date.getTime() - 32400);
+        List<Bus> bus = busDAO.selectedBusListPlaceTime(departure,arrival,ts);
 
         return objectMapper.writeValueAsString(bus);
     }
