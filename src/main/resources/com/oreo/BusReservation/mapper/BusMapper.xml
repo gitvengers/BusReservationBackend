@@ -34,16 +34,16 @@
         INSERT
           INTO Bus(departure, arrival, depart_time, arrive_time, type, company)
         VALUES (
-                departure = #{departure},
-                arrival = #{arrival},
-                depart_time = #{depart_time},
-                arrive_time = #{arrive_time},
-                type = #{type},
-                company = #{company}
+                #{departure},
+                #{arrival},
+                #{depart_time},
+                #{arrive_time},
+                #{type},
+                #{company}
                 )
     </insert>
 
-    <update id="updateBus" parameterType="com.oreo.BusReservation.domain.Administrator">
+    <update id="updateBus" parameterType="com.oreo.BusReservation.domain.Bus">
         UPDATE Bus
            SET departure = #{departure},
                arrival = #{arrival},
