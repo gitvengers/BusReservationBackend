@@ -55,9 +55,10 @@ public class BusController {
                               @RequestParam("depart_time") Timestamp depart_time,
                               @RequestParam("arrive_time") Timestamp arrive_time,
                               @RequestParam("type") String type,
-                              @RequestParam("company") String company) throws JsonProcessingException {
+                              @RequestParam("company") String company,
+                              @RequestParam("price") int price) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
-        Bus bus = new Bus(departure,arrival,depart_time,arrive_time,type,company);
+        Bus bus = new Bus(departure,arrival,depart_time,arrive_time,type,company,price);
         boolean isSuccess = false;
         try{
             busDAO.insertBus(bus);

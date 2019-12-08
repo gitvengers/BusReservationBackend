@@ -32,14 +32,15 @@
 
     <insert id="insertBus" parameterType="com.oreo.BusReservation.domain.Bus">
         INSERT
-          INTO Bus(departure, arrival, depart_time, arrive_time, type, company)
+          INTO Bus(departure, arrival, depart_time, arrive_time, type, company, price)
         VALUES (
                 #{departure},
                 #{arrival},
                 #{depart_time},
                 #{arrive_time},
                 #{type},
-                #{company}
+                #{company},
+                #{price}
                 )
     </insert>
 
@@ -50,7 +51,8 @@
                depart_time = #{depart_time},
                arrive_time = #{arrive_time},
                type = #{type},
-               company = #{company}
+               company = #{company},
+               price = #{price}
          WHERE id = #{id}
     </update>
 
