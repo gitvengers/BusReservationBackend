@@ -40,8 +40,10 @@ public class BusController {
                           @RequestParam("arrival") String arrival,
                           @RequestParam("date") Timestamp date
                           ) throws JsonProcessingException {
-            ObjectMapper objectMapper = new ObjectMapper();
-        List<Bus> bus = busDAO.selectedBusListPlaceTime(departure,arrival,date);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        Timestamp ts = new Timestamp(date.getTime() - 32400);
+        List<Bus> bus = busDAO.selectedBusListPlaceTime(departure,arrival,ts);
 
         return objectMapper.writeValueAsString(bus);
     }
@@ -53,9 +55,10 @@ public class BusController {
                               @RequestParam("depart_time") Timestamp depart_time,
                               @RequestParam("arrive_time") Timestamp arrive_time,
                               @RequestParam("type") String type,
-                              @RequestParam("company") String company) throws JsonProcessingException {
+                              @RequestParam("company") String company,
+                              @RequestParam("price") int price) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
-        Bus bus = new Bus(departure,arrival,depart_time,arrive_time,type,company);
+        Bus bus = new Bus(departure,arrival,depart_time,arrive_time,type,company,price);
         boolean isSuccess = false;
         try{
             busDAO.insertBus(bus);
