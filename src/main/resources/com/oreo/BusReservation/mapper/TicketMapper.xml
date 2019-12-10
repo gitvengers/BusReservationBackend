@@ -7,7 +7,7 @@
     <select id="selectedTickets" resultType="com.oreo.BusReservation.domain.Ticket">
         SELECT *
           FROM Ticket
-         WHERE mamber_id = ${memberId}
+         WHERE member_id = ${memberId}
     </select>
 
     <select id="selectedTicket" resultType="com.oreo.BusReservation.domain.Ticket">
@@ -15,4 +15,26 @@
           FROM Ticket
          WHERE id = ${id}
     </select>
+
+    <insert id="inertTicket" parameterType="com.oreo.BusReservation.domain.Ticket">
+        INSERT INTO Ticket(bus_id,member_id,info) VALUES(
+            #{bus_id},
+            #{member_id},
+            #{info}
+        )
+    </insert>
+
+    <select id="countTicket" resultType="int">
+        SELECT COUNT(*)
+        FROM Ticket
+        WHERE bus_id = #{bus_id}
+    </select>
+
+    <select id="ticketDetail" resultType="com.oreo.BusReservation.domain.TicketDetail">
+        SELECT *
+        FROM Ticket AS T INNER JOIN Bus AS B
+        ON B.id = T.bus_id
+        WHERE T.id = #{id}
+    </select>
+
 </mapper>
