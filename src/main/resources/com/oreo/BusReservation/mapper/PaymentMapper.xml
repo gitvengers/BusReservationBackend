@@ -14,7 +14,7 @@
     </insert>
 
     <select id="selectPaymentList" resultType="com.oreo.BusReservation.domain.Payment">
-        SELECT
+        SELECT Ticket.member_id,Ticket.id,Bus.depart_time,Bus.company,Bus.price;
         FROM Ticket AS T INNER JOIN Bus AS B
         ON B.id = T.bus_id
         WHERE T.id = #{id}

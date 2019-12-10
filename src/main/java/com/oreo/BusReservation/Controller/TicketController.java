@@ -4,7 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
+import com.oreo.BusReservation.Repository.PaymentDAO;
 import com.oreo.BusReservation.Repository.TicketDAO;
+import com.oreo.BusReservation.domain.Payment;
 import com.oreo.BusReservation.domain.Ticket;
 import com.oreo.BusReservation.domain.TicketDetail;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.spring.web.json.Json;
 
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 @EnableAutoConfiguration
@@ -24,11 +28,18 @@ public class TicketController {
     @Autowired
     TicketDAO ticketDAO;
 
+    @Autowired
+    PaymentDAO paymentDAO;
+
     @GetMapping("ticket/list")
     public String getTicketList(@RequestParam("member_id") int memberId) {
         List<Ticket> tickets = ticketDAO.selectedTickets(memberId);
+        List<TicketDetail> ticketDetails = new ArrayList<>();
+        for (int i=0;i<tickets.size();i++){
+            ticketDetails.add(ticketDAO.ticketDetail(tickets.get(i).getId()));
+        }
         Gson gson = new Gson();
-        return gson.toJson(tickets);
+        return gson.toJson(ticketDetails);
     }
 
     @PostMapping("ticket/insert")
@@ -58,6 +69,8 @@ public class TicketController {
     @GetMapping("ticket/detail")
     public String getTicketDetail(@RequestParam("id") int id){
         Gson gson = new Gson();
+        System.out.println(ticketDAO.ticketDetail(id).getBus_arrive_time());
+        System.out.println(ticketDAO.ticketDetail(id).getBus_arrive_time() instanceof Timestamp);
         return gson.toJson(ticketDAO.ticketDetail(id));
     }
 }
