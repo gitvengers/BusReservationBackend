@@ -28,6 +28,7 @@
          WHERE departure = #{departure}
            AND arrival = #{arrival}
            AND depart_time >= #{depart_time}
+           AND DATE(#{depart_time})+1 > depart_time
     </select>
 
     <insert id="insertBus" parameterType="com.oreo.BusReservation.domain.Bus">
