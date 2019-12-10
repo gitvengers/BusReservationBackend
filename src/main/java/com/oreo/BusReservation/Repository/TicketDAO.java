@@ -2,6 +2,7 @@ package com.oreo.BusReservation.Repository;
 
 
 import com.oreo.BusReservation.domain.Ticket;
+import com.oreo.BusReservation.domain.TicketDetail;
 import com.oreo.BusReservation.mapper.TicketMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -27,5 +28,12 @@ public class TicketDAO {
     }
     public void deleteTicket(int id) {
         ticketMapper.deleteTicket(id);
+    }
+    public TicketDetail ticketDetail(int id){
+        return ticketMapper.ticketDetail(id);
+    }
+
+    public int countTicket(int bus_id){
+        return ticketMapper.countTicket(bus_id);
     }
 }
