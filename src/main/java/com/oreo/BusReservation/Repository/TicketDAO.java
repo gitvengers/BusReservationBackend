@@ -29,8 +29,8 @@ public class TicketDAO {
     public void deleteTicket(int id) {
         ticketMapper.deleteTicket(id);
     }
-    public TicketDetail ticketDetail(int id){
-        return ticketMapper.ticketDetail(id);
+    public List<TicketDetail> ticketDetail(int member_id){
+        return ticketMapper.ticketDetail(member_id);
     }
 
     public int countTicket(int bus_id){
