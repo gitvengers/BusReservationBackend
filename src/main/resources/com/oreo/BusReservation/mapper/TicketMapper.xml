@@ -34,7 +34,7 @@
         SELECT *
         FROM Ticket AS T INNER JOIN Bus AS B
         ON B.id = T.bus_id
-        WHERE T.id = #{id}
+        WHERE T.member_id = #{member_id}
     </select>
 
 </mapper>

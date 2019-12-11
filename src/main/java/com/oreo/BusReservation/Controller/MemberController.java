@@ -58,14 +58,6 @@ public class MemberController {
         return objectMapper.writeValueAsString(isSuccess);
     }
 
-    @GetMapping("/payment/list")
-    public String userPaymentMethod(@RequestParam("member_id") int member_id){
-        //TODO : payment 내역 일시적으로 저장해둘 것.
-        System.out.println("todo");
-
-        return "";
-    }
-
     // Admin Controller
     @GetMapping("/admin/memeber/list") // 관리자 권한 : 모든 유저 목록 불러오기
     public String returnAllMembers() throws JsonProcessingException {

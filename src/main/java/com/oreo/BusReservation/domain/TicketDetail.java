@@ -43,4 +43,20 @@ public class TicketDetail {
         this.bus_company = bus_company;
         this.bus_price = bus_price;
     }
+
+    public Timestamp getBus_depart_time() {
+        return bus_depart_time;
+    }
+
+    public void setBus_depart_time(Timestamp bus_depart_time) {
+        this.bus_depart_time = bus_depart_time;
+    }
+
+    public Timestamp getBus_arrive_time() {
+        return bus_arrive_time;
+    }
+
+    public void setBus_arrive_time(Timestamp bus_arrive_time) {
+        this.bus_arrive_time = bus_arrive_time;
+    }
 }
