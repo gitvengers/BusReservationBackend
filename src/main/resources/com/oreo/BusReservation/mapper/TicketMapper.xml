@@ -12,11 +12,12 @@
 
     <select id="selectedTicket" resultType="com.oreo.BusReservation.domain.Ticket">
         SELECT *
-          FROM Ticket
-         WHERE id = ${id}
+        FROM Ticket AS T INNER JOIN Bus AS B
+        ON B.id = T.bus_id
+        WHERE T.member_id = #{member_id}
     </select>
 
-    <insert id="inertTicket" parameterType="com.oreo.BusReservation.domain.Ticket">
+    <insert id="insertTicket" parameterType="com.oreo.BusReservation.domain.Ticket">
         INSERT INTO Ticket(bus_id,member_id,info) VALUES(
             #{bus_id},
             #{member_id},
@@ -34,7 +35,7 @@
         SELECT *
         FROM Ticket AS T INNER JOIN Bus AS B
         ON B.id = T.bus_id
-        WHERE T.member_id = #{member_id}
+        WHERE T.id = #{id}
     </select>
 
 </mapper>

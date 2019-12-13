@@ -1,22 +1,16 @@
 package com.oreo.BusReservation.Controller;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.reflect.TypeToken;
-import com.oreo.BusReservation.Repository.PaymentDAO;
+import com.oreo.BusReservation.Repository.PaymentListDAO;
 import com.oreo.BusReservation.Repository.TicketDAO;
-import com.oreo.BusReservation.domain.Payment;
 import com.oreo.BusReservation.domain.Ticket;
 import com.oreo.BusReservation.domain.TicketDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import springfox.documentation.spring.web.json.Json;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -29,12 +23,12 @@ public class TicketController {
     TicketDAO ticketDAO;
 
     @Autowired
-    PaymentDAO paymentDAO;
+    PaymentListDAO paymentDAO;
 
     @GetMapping("ticket/list")
     public String getTicketList(@RequestParam("member_id") int memberId) {
         Gson gson = new Gson();
-        return gson.toJson(ticketDAO.ticketDetail(memberId));
+        return gson.toJson(ticketDAO.selectedTickets(memberId));
     }
 
     @PostMapping("ticket/insert")
@@ -44,13 +38,9 @@ public class TicketController {
         Ticket ticket = new Ticket(bus_id,member_id,info);
         boolean isSuccess = false;
 
-        try{
-            ticketDAO.insertTicket(ticket);
-            isSuccess = true;
-        }
-        catch (Exception e){
-            System.out.println("ticketing failed");
-        }
+        ticketDAO.insertTicket(ticket);
+        isSuccess = true;
+
         Gson gson = new Gson();
         return gson.toJson(isSuccess);
     }
