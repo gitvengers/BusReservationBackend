@@ -28,7 +28,7 @@ public class TicketController {
     @GetMapping("ticket/list")
     public String getTicketList(@RequestParam("member_id") int memberId) {
         Gson gson = new Gson();
-        return gson.toJson(ticketDAO.ticketDetail(memberId));
+        return gson.toJson(ticketDAO.selectedTickets(memberId));
     }
 
     @PostMapping("ticket/insert")
@@ -38,13 +38,9 @@ public class TicketController {
         Ticket ticket = new Ticket(bus_id,member_id,info);
         boolean isSuccess = false;
 
-        try{
-            ticketDAO.insertTicket(ticket);
-            isSuccess = true;
-        }
-        catch (Exception e){
-            System.out.println("ticketing failed");
-        }
+        ticketDAO.insertTicket(ticket);
+        isSuccess = true;
+
         Gson gson = new Gson();
         return gson.toJson(isSuccess);
     }
