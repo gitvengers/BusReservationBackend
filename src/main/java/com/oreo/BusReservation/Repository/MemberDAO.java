@@ -27,5 +27,7 @@ public class MemberDAO {
     public void deleteMember(int id) {
         memberMapper.deleteMember(id);
     }
-
+    public Member selectMemberId(int id){
+        return memberMapper.selectMemberId(id);
+    }
 }
