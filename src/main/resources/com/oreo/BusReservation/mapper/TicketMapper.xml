@@ -4,13 +4,13 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.oreo.BusReservation.mapper.TicketMapper">
-    <select id="selectedTickets" resultType="com.oreo.BusReservation.domain.Ticket">
+    <select id="selectedTicketList" resultType="com.oreo.BusReservation.domain.Ticket">
         SELECT *
           FROM Ticket
          WHERE member_id = ${memberId}
     </select>
 
-    <select id="selectedTicket" resultType="com.oreo.BusReservation.domain.Ticket">
+    <select id="selectedTickets" resultType="com.oreo.BusReservation.domain.TicketDetail">
         SELECT *
         FROM Ticket AS T INNER JOIN Bus AS B
         ON B.id = T.bus_id
