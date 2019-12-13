@@ -27,13 +27,8 @@ public class TicketController {
 
     @GetMapping("ticket/list")
     public String getTicketList(@RequestParam("member_id") int memberId) {
-        List<Ticket> tickets = ticketDAO.selectedTickets(memberId);
-        List<TicketDetail> ticketDetails = new ArrayList<>();
-        for (int i=0;i<tickets.size();i++){
-            ticketDetails.add(ticketDAO.ticketDetail(tickets.get(i).getId()));
-        }
         Gson gson = new Gson();
-        return gson.toJson(ticketDetails);
+        return gson.toJson(ticketDAO.ticketDetail(memberId));
     }
 
     @PostMapping("ticket/insert")
@@ -63,8 +58,6 @@ public class TicketController {
     @GetMapping("ticket/detail")
     public String getTicketDetail(@RequestParam("id") int id){
         Gson gson = new Gson();
-        System.out.println(ticketDAO.ticketDetail(id).getBus_arrive_time());
-        System.out.println(ticketDAO.ticketDetail(id).getBus_arrive_time() instanceof Timestamp);
         return gson.toJson(ticketDAO.ticketDetail(id));
     }
 }
