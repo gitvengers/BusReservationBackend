@@ -3,8 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.oreo.BusReservation.mapper.PaymentMapper">
-    <insert id="insertPayment" parameterType="com.oreo.BusReservation.domain.Payment">
+<mapper namespace="com.oreo.BusReservation.mapper.PaymentListMapper">
+    <insert id="insertPayment" parameterType="com.oreo.BusReservation.domain.PaymentList">
         INSERT INTO Payment(payment_date,ticket_id,member_id,price) VALUES(
             NOW(),
             #{ticket_id},
@@ -13,7 +13,7 @@
         )
     </insert>
 
-    <select id="selectPaymentList" resultType="com.oreo.BusReservation.domain.Payment">
+    <select id="selectPaymentList" resultType="com.oreo.BusReservation.domain.PaymentList">
         SELECT Ticket.member_id,Ticket.id,Bus.depart_time,Bus.company,Bus.price;
         FROM Ticket AS T INNER JOIN Bus AS B
         ON B.id = T.bus_id
