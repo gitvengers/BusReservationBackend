@@ -1,13 +1,23 @@
 package com.oreo.BusReservation.domain;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+@Data
 public class Ticket implements Serializable {
     int id;
     int bus_id;
     int member_id;
     int info;
+
+    public Ticket(int id, int bus_id, int member_id, int info) {
+        this.id = id;
+        this.bus_id = bus_id;
+        this.member_id = member_id;
+        this.info = info;
+    }
 
     public Ticket(int bus_id, int member_id, int info) {
         this.bus_id = bus_id;
@@ -45,15 +55,5 @@ public class Ticket implements Serializable {
 
     public void setInfo(int info) {
         this.info = info;
-    }
-
-    @Override
-    public String toString() {
-        return "Ticket{" +
-                "id=" + id +
-                ", bus_id=" + bus_id +
-                ", member_id=" + member_id +
-                ", info=" + info +
-                '}';
     }
 }

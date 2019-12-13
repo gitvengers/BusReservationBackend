@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oreo.BusReservation.mapper.PaymentListMapper">
+    <insert id="insertPayment" parameterType="com.oreo.BusReservation.domain.PaymentList">
+        INSERT INTO Payment(payment_date,ticket_id,member_id,price) VALUES(
+            NOW(),
+            #{ticket_id},
+            #{member_id},
+            #{price}
+        )
+    </insert>
+
+    <select id="selectPaymentList" resultType="com.oreo.BusReservation.domain.PaymentDetail">
+        SELECT *
+        FROM Ticket AS T INNER JOIN Bus AS B
+        ON B.id = T.bus_id
+        WHERE T.member_id = #{mbemid}
+    </select>
+</mapper>
