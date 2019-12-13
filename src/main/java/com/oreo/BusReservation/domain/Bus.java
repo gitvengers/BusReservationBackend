@@ -36,4 +36,8 @@ public class Bus implements Serializable {
         this.company = company;
         this.price = price;
     }
+
+    public int getPrice() {
+        return price;
+    }
 }

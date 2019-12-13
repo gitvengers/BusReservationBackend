@@ -30,4 +30,27 @@ public class PaymentList {
         this.bus_price = bus_price;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public int getMember_id() {
+        return member_id;
+    }
+
+    public int getTicket_id() {
+        return ticket_id;
+    }
+
+    public Timestamp getDepart_time() {
+        return depart_time;
+    }
+
+    public String getBus_company() {
+        return bus_company;
+    }
+
+    public int getBus_price() {
+        return bus_price;
+    }
 }

@@ -13,10 +13,10 @@
         )
     </insert>
 
-    <select id="selectPaymentList" resultType="com.oreo.BusReservation.domain.PaymentList">
-        SELECT Ticket.member_id,Ticket.id,Bus.depart_time,Bus.company,Bus.price;
+    <select id="selectPaymentList" resultType="com.oreo.BusReservation.domain.PaymentDetail">
+        SELECT *
         FROM Ticket AS T INNER JOIN Bus AS B
         ON B.id = T.bus_id
-        WHERE T.id = #{id}
+        WHERE T.member_id = #{mbemid}
     </select>
 </mapper>

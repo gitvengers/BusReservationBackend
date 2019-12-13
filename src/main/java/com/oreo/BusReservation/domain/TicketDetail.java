@@ -59,4 +59,16 @@ public class TicketDetail {
     public void setBus_arrive_time(Timestamp bus_arrive_time) {
         this.bus_arrive_time = bus_arrive_time;
     }
+
+    public int getTicket_id() {
+        return ticket_id;
+    }
+
+    public int getBus_id() {
+        return bus_id;
+    }
+
+    public int getTicket_member_id() {
+        return ticket_member_id;
+    }
 }
